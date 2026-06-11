@@ -1,0 +1,9 @@
+name: Diabetes Prediction Wisesa
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      random_state: {type: int, default: 7}
+      learning_rate: {type: float, default: 0.1}
+    command: "python3 modelling.py --random_state {random_state} --learning_rate {learning_rate}"
