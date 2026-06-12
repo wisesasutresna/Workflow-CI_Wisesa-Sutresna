@@ -21,7 +21,7 @@ def train_and_eval(df, random_state, learning_rate):
     # Setup experiment jika dijalankan di luar mlflow run CLI
     is_mlflow_run = "MLFLOW_RUN_ID" in os.environ
     if not is_mlflow_run:
-        mlflow.set_experiment("Diabetes Prediction - Wisesa")
+        mlflow.set_experiment("Diabetes Prediction - wisesa_sutresna")
         mlflow.start_run(run_name="GB_CI_Retrain")
         
     mlflow.sklearn.autolog()
