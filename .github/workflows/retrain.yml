@@ -38,6 +38,14 @@ jobs:
         fi
         mlflow run MLProject --env-manager=local -P random_state=7 -P learning_rate=0.1
 
+    - name: Commit and Push Model Artifacts
+      run: |
+        git config --global user.name "Model Retraining Bot"
+        git config --global user.email "bot@mlops.local"
+        git add -A mlruns/ MLProject/model/ || true
+        git diff-index --quiet HEAD || git commit -m "chore: auto-commit retrained model artifacts [skip ci]"
+        git push
+
     - name: Set up Docker Buildx
       if: ${{ secrets.DOCKER_HUB_TOKEN != '' }}
       uses: docker/setup-buildx-action@v3

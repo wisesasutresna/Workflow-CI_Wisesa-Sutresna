@@ -41,6 +41,12 @@ def train_and_eval(df, random_state, learning_rate):
         )
         model.fit(X_train, y_train)
         
+        # Save model locally to 'model' directory so mlflow models build-docker can find it
+        import shutil
+        if os.path.exists("model"):
+            shutil.rmtree("model")
+        mlflow.sklearn.save_model(model, "model")
+        
         preds = model.predict(X_test)
         acc = accuracy_score(y_test, preds)
         print(f"Akurasi Model Retrained: {acc:.4f}")
