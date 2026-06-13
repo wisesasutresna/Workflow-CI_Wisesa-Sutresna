@@ -52,8 +52,8 @@ jobs:
       run: |
         git config --global user.name "Model Retraining Bot"
         git config --global user.email "bot@mlops.local"
-        git add -A mlruns/ MLProject/model/ || true
-        git diff-index --quiet HEAD || git commit -m "chore: auto-commit retrained model artifacts [skip ci]"
+        git add -A MLProject/model/ || true
+        git commit -m "chore: auto-commit retrained model artifacts [skip ci]" || true
         git push origin main || true
 
     - name: Set up Docker Buildx
