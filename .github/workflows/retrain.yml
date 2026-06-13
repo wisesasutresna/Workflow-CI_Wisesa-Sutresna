@@ -43,7 +43,8 @@ jobs:
         if [ ! -z "$DAGSHUB_TOKEN" ]; then
           export MLFLOW_TRACKING_USERNAME=$DAGSHUB_OWNER
           export MLFLOW_TRACKING_PASSWORD=$DAGSHUB_TOKEN
-          export MLFLOW_TRACKING_URI="https://dagshub.com/$DAGSHUB_OWNER/$DAGSHUB_REPO.mlruns"
+          export MLFLOW_TRACKING_URI="https://dagshub.com/$DAGSHUB_OWNER/$DAGSHUB_REPO.mlflow"
+          export MLFLOW_EXPERIMENT_NAME="Diabetes Prediction - wisesa_sutresna"
         fi
         mlflow run MLProject --env-manager=local -P random_state=7 -P learning_rate=0.1
 
